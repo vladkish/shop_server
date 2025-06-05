@@ -1,0 +1,221 @@
+*::selection {
+    color: #FFA500;
+}
+
+.body {
+    margin: 0;
+}
+
+.content {
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 350px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header a {
+    color: black;
+    font-size: 34px;
+    text-decoration: none;
+    font-family: monospace;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    gap: 25px;
+    color: black;
+    font-size: 24px;
+}
+
+.nav ul li {
+    transition: .1s ease;
+}
+
+.nav ul li:hover {
+    text-decoration: underline;
+    text-decoration-color: black;
+    cursor: pointer;
+}
+
+.category {
+    margin-top: 50px;
+}
+
+.category nav ul li:hover {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: black;
+    cursor: pointer;
+}
+
+.logo {
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo_product {
+    width: 200px;
+    height: 230px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 0;
+    margin-top: 100px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .2s ease;
+}
+
+.product:hover {
+    cursor: pointer;
+}
+
+.product img {
+    transition: .1s ease;
+}
+
+.price_product {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.product img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer */
+.footer {
+    background-color: black;
+    color: white;
+}
+
+.footer_block {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.first_text_one_footer {
+    gap: 5px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+/* Работа с текстом */
+.question_order {
+    font-size: 24px;
+    font-family: monospace;
+}
+
+.time_work, .email {
+    color: gray;
+}
+
+
+.ul_footer li {
+    list-style-type: none;
+}
+
+/* Первый блок */
+.one_footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.first_text_one_footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.second_text_one_footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* Второй блок */
+.two_footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.two_footer h1 {
+    font-size: 24px;
+    color: aliceblue;
+}
+
+.nav_footer ul {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0;
+    gap: 15px;
+}
+
+.name_logo {
+    user-select: none;
+}
+
+/* Четвертый */
+.four_footer {
+    display: flex; 
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.nav .head_link {
+    color: black;
+    font-size: 24px;
+}
+
+.links_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.ul_footer li a {
+    color: white;
+    font-size: 19px;
+    text-decoration: none;
+}
+
+.ul_footer li a:hover {
+    color: gray;
+}
