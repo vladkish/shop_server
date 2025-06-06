@@ -31,3 +31,14 @@ def basket(request, product_id):
         Basket.objects.create(user=request.user, product=product, quantity=1)
     
     return redirect(request.META["HTTP_REFERER"])
+
+# Add and minus qantity basket.
+def add_basket(request, basket_id):
+    basket = Basket.objects.get(id=basket_id)
+    basket.add_basket()
+    return redirect(request.META["HTTP_REFERER"])
+
+def minus_basket(request, basket_id):
+    basket = Basket.objects.get(id=basket_id)
+    basket.minus_basket()
+    return redirect(request.META["HTTP_REFERER"])

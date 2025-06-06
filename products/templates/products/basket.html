@@ -57,8 +57,8 @@
                             <div class="number">
                                 <p>{{ basket.quantity }}</p>
                                 <div class="doing">
-                                    <a href="" class="clean_link">+</a>
-                                    <a href="" class="clean_link">-</a>
+                                    <a href="{% url "products:add_basket" basket.id %}" class="clean_link">+</a>
+                                    <a href="{% url "products:minus_basket" basket.id %}" class="clean_link">-</a>
                                 </div>
                             </div>
                             <p class="price_basket">{{ basket.sum }} руб.</p>

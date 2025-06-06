@@ -53,3 +53,14 @@ class Basket(models.Model):
     # Fnc sum for basket.
     def sum(self):
         return self.product.price * self.quantity
+    
+    # Logic method add and minus qantity basket.
+    def add_basket(self):
+        self.quantity += 1
+        self.save()
+        return self.quantity
+    
+    def minus_basket(self):
+        self.quantity -= 1
+        self.save()
+        return self.quantity
