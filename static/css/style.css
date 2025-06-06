@@ -219,3 +219,13 @@
 .ul_footer li a:hover {
     color: gray;
 }
+
+
+/* Наброски с бэка */
+.leave_link {
+    transition: .1s ease;
+}
+
+.leave_link:hover {
+    color: red;
+}

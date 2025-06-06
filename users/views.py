@@ -43,3 +43,8 @@ def sign(request):
         'form' : form
     }
     return render(request, 'users/sign.html', context)
+
+# Fnc logout.
+def user_logout(request):
+    auth.logout(request)
+    return redirect(request.META['HTTP_REFERER'])
