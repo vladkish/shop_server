@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block links %}
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="{% static "css/profile.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/button.css" %}">
+    <link rel="stylesheet" href="{% static "css/basket.css" %}">
 {% endblock links %}
 
 {% block content %}
@@ -47,56 +47,26 @@
                 <div class="count_product">2</div>
             </div>
 
-            <div class="cart_basket">
-                <h1>Худи черного цвета с монограммами Кто убил Марка</h1>
-                <p>Мягкая ткань для свитшотов. Свобода - когда не боишься обосраться</p>
-                <hr>
-                <div class="cart_count">
-                    <div class="number">
-                        <p>1</p>
-                        <div class="doing">
-                            <a href="" class="clean_link">+</a>
-                            <a href="" class="clean_link">-</a>
+            {% if baskets %}
+                {% for basket in baskets %}
+                    <div class="cart_basket">
+                        <h1>{{ basket.product.title }}</h1>
+                        <p>{{ basket.product.description }}</p>
+                        <hr>
+                        <div class="cart_count">
+                            <div class="number">
+                                <p>1</p>
+                                <div class="doing">
+                                    <a href="" class="clean_link">+</a>
+                                    <a href="" class="clean_link">-</a>
+                                </div>
+                            </div>
+                            <p class="price_basket">{{ basket.product.price }} руб.</p>
+                            <a href="" class="delete_basket_link">Удалить</a>
                         </div>
                     </div>
-                    <p class="price_basket">609000 руб.</p>
-                    <a href="" class="delete_basket_link">Удалить</a>
-                </div>
-            </div>
-
-            <div class="cart_basket">
-                <h1>Худи черного цвета с монограммами Кто убил Марка</h1>
-                <p>Мягкая ткань для свитшотов. Свобода - когда не боишься обосраться</p>
-                <hr>
-                <div class="cart_count">
-                    <div class="number">
-                        <p>1</p>
-                        <div class="doing">
-                            <a href="" class="clean_link">+</a>
-                            <a href="" class="clean_link">-</a>
-                        </div>
-                    </div>
-                    <p class="price_basket">609000 руб.</p>
-                    <a href="" class="delete_basket_link">Удалить</a>
-                </div>
-            </div>
-
-            <div class="cart_basket">
-                <h1>Худи черного цвета с монограммами Кто убил Марка</h1>
-                <p>Мягкая ткань для свитшотов. Свобода - когда не боишься обосраться</p>
-                <hr>
-                <div class="cart_count">
-                    <div class="number">
-                        <p>1</p>
-                        <div class="doing">
-                            <a href="" class="clean_link">+</a>
-                            <a href="" class="clean_link">-</a>
-                        </div>
-                    </div>
-                    <p class="price_basket">609000 руб.</p>
-                    <a href="" class="delete_basket_link">Удалить</a>
-                </div>
-            </div>
+                {% endfor %}
+            {% endif %}
 
             <div class="total">
                 <p>Итого</p>

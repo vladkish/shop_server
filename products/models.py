@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 class Category(models.Model):
     title = models.CharField(max_length=60)
@@ -21,3 +22,14 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to="product_image/")
+    
+    
+# Basket
+class Basket(models.Model):
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    quantity = models.PositiveSmallIntegerField()
+    date_add = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.product} for {self.user}"

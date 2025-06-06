@@ -36,12 +36,12 @@
 }
 
 .nav ul li {
+    border: 1px solid transparent;
     transition: .1s ease;
 }
 
 .nav ul li:hover {
-    text-decoration: underline;
-    text-decoration-color: black;
+    border-bottom-color: black;
     cursor: pointer;
 }
 
@@ -223,9 +223,10 @@
 
 /* Наброски с бэка */
 .leave_link {
+    color: black;
     transition: .1s ease;
 }
 
 .leave_link:hover {
-    color: red;
+    color: red !important;
 }

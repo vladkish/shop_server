@@ -8,7 +8,8 @@ from products.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('users/', include('users.urls', namespace='users'))
+    path('users/', include('users.urls', namespace='users')),
+    path('products/', include('products.urls', namespace='products'))
 ]
 
 if settings.DEBUG:
