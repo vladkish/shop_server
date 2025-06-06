@@ -56,7 +56,8 @@ class Basket(models.Model):
     
     # Logic method add and minus qantity basket.
     def add_basket(self):
-        self.quantity += 1
+        if self.quantity <= 6:
+            self.quantity += 1
         self.save()
         return self.quantity
     

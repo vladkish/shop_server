@@ -36,9 +36,14 @@ def basket(request, product_id):
 def add_basket(request, basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.add_basket()
+    
     return redirect(request.META["HTTP_REFERER"])
 
 def minus_basket(request, basket_id):
     basket = Basket.objects.get(id=basket_id)
-    basket.minus_basket()
+    count = basket.minus_basket()
+    
+    if count == 0:
+        Basket.objects.get(id=basket_id).delete()
+    
     return redirect(request.META["HTTP_REFERER"])
