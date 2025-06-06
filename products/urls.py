@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import basket_view, basket, add_basket, minus_basket
+from .views import basket_view, basket, add_basket, minus_basket, delete_basket, delete_all_baskets
 
 app_name = "products"
 
@@ -9,5 +9,9 @@ urlpatterns = [
     
     # Fnc add and minus qantity basket.
     path('plus/basket/<int:basket_id>/', add_basket, name="add_basket"), 
-    path('minus/basket/<int:basket_id>/', minus_basket, name="minus_basket")
+    path('minus/basket/<int:basket_id>/', minus_basket, name="minus_basket"),
+    
+    # Delete basket.
+    path('delete/basket/<int:basket_id>/', delete_basket, name="delete_basket"),
+    path('delete/all/basket/', delete_all_baskets, name="delete_baskets")
 ]

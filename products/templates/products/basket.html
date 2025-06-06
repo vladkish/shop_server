@@ -41,42 +41,46 @@
             </form>
         </section>
 
-        <section class="basket">
-            <div class="text_basket">
-                <h1>Корзина</h1>
-                <div class="count_product">{{ baskets.total_quantity }}</div>
-            </div>
+        {% if baskets %}
+            <section class="basket">
+                <div class="text_basket">
+                    <h1>Корзина</h1>
+                    <div class="count_product">{{ baskets.total_quantity }}</div>
+                </div>
 
-            {% if baskets %}
-                {% for basket in baskets %}
-                    <div class="cart_basket">
-                        <h1>{{ basket.product.title }}</h1>
-                        <p>{{ basket.product.description }}</p>
-                        <hr>
-                        <div class="cart_count">
-                            <div class="number">
-                                <p>{{ basket.quantity }}</p>
-                                <div class="doing">
-                                    <a href="{% url "products:add_basket" basket.id %}" class="clean_link">+</a>
-                                    <a href="{% url "products:minus_basket" basket.id %}" class="clean_link">-</a>
+                {% if baskets %}
+                    {% for basket in baskets %}
+                        <div class="cart_basket">
+                            <h1>{{ basket.product.title }}</h1>
+                            <p>{{ basket.product.description }}</p>
+                            <hr>
+                            <div class="cart_count">
+                                <div class="number">
+                                    <p>{{ basket.quantity }}</p>
+                                    <div class="doing">
+                                        <a href="{% url "products:add_basket" basket.id %}" class="clean_link">+</a>
+                                        <a href="{% url "products:minus_basket" basket.id %}" class="clean_link">-</a>
+                                    </div>
                                 </div>
+                                <p class="price_basket">{{ basket.sum }} руб.</p>
+                                <a href="{% url "products:delete_basket" basket.id %}" class="delete_basket_link">Удалить</a>
                             </div>
-                            <p class="price_basket">{{ basket.sum }} руб.</p>
-                            <a href="" class="delete_basket_link">Удалить</a>
                         </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
 
-            <div class="total">
-                <p>Итого</p>
-                <p class="price">{{ baskets.total_sum }} руб.</p>
-            </div>
+                <div class="total">
+                    <p>Итого</p>
+                    <p class="price">{{ baskets.total_sum }} руб.</p>
+                </div>
 
-            <div class="delete">
-                <a href="" class="delete_basket">Удалить всю корзину</a>
-                <a href="" class="offer_order">Оформить заказ</a>
-            </div>
-        </section>
+                <div class="delete">
+                    <a href="{% url "products:delete_baskets" %}" class="delete_basket">Удалить всю корзину</a>
+                    <a href="" class="offer_order">Оформить заказ</a>
+                </div>
+            </section>
+        {% else %}
+            <h1>Корзина пуста</h1>    
+        {% endif %}
     </section>
 {% endblock content %}
