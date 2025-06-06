@@ -11,7 +11,7 @@
 {% block content %}
     <section class="center">
         <section class="profile">
-            <div class="text_profile"><h1>OXXXYSHOP - Профиль</h1></div>
+            <div class="text_profile"><h1>OXXXYSHOP - Профиль({{ user.username }})</h1></div>
             <div class="photo"><img src="photo/profile.png" class="photo_profile" alt="Аватарка пользователя"></div>
             <form action="" method="post" class="form">
                 <div class="form_block">
@@ -44,7 +44,7 @@
         <section class="basket">
             <div class="text_basket">
                 <h1>Корзина</h1>
-                <div class="count_product">2</div>
+                <div class="count_product">{{ baskets.total_quantity }}</div>
             </div>
 
             {% if baskets %}
@@ -55,13 +55,13 @@
                         <hr>
                         <div class="cart_count">
                             <div class="number">
-                                <p>1</p>
+                                <p>{{ basket.quantity }}</p>
                                 <div class="doing">
                                     <a href="" class="clean_link">+</a>
                                     <a href="" class="clean_link">-</a>
                                 </div>
                             </div>
-                            <p class="price_basket">{{ basket.product.price }} руб.</p>
+                            <p class="price_basket">{{ basket.sum }} руб.</p>
                             <a href="" class="delete_basket_link">Удалить</a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
 
             <div class="total">
                 <p>Итого</p>
-                <p class="price">6327,00 руб.</p>
+                <p class="price">{{ baskets.total_sum }} руб.</p>
             </div>
 
             <div class="delete">
