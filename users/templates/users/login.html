@@ -1,0 +1,26 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Авторизация</title>
+{% endblock title %}
+
+{% block form %}
+    <form action="{% url "users:login" %}" method="post" class="form">
+
+        {% csrf_token %}
+        
+        <h1 class="logo_name">OxxxyShop</h1>
+        <p>Авторизация</p>
+        <div class="block">
+            <label for="{{ form.username.id_for_label }}">Логин</label>
+            {{ form.username }}
+        </div>
+
+        <div class="block">
+            <label for="{{ form.password.id_for_label }}">Пароль</label>
+            {{ form.password }}
+        </div>
+        <button class="sign_button">Войти</button>
+    </form>
+{% endblock form %}

@@ -1,0 +1,37 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Регистрация</title>
+{% endblock title %}
+
+{% block form %}
+    <form action="{% url "users:sign" %}" method="post" class="form">
+        
+        {% csrf_token %}
+
+        <h1 class="logo_name">OxxxyShop</h1>
+        <p>Регистрация</p>
+
+        <div class="block">
+            <label for="{{ form.username.id_for_label }}">Имя</label>
+            {{ form.username }}
+        </div>
+
+        <div class="block">
+            <label for="{{ form.email.id_for_label }}">Почта</label>
+            {{ form.email }}
+        </div>
+
+        <div class="block">
+            <label for="{{ form.password1.id_for_label }}">Пароль</label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="block">
+            <label for="{{ form.password2.id_for_label }}">Пароль</label>
+            {{ form.password2 }}
+        </div>
+        <button class="sign_button">Зарегистрироваться</button>
+    </form>
+{% endblock form %}

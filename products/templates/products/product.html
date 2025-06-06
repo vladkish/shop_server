@@ -16,19 +16,21 @@
 <body class="body">
     <section class="content">
         <header class="header">
-            <a href="product.html" class="name_logo">OXXXYSHOP</a>
+            <a href="{% url "index" %}" class="name_logo">OXXXYSHOP</a>
             <nav class="nav">
                 <ul>
-                    <li><a href="product.html" class="head_link">Главная</a></li> 
+                    <li><a href="{% url "index" %}" class="head_link">Главная</a></li> 
                     <li><a href="#main" class="head_link">Одежда</a></li>
                     <li><a href="basket.html" class="head_link">Корзина</a></li> 
-                    <li><a href="sign.html" class="head_link">Создать </a></li>/<li><a href="login.html" class="head_link">Войти</a></li>
+                    {% if not user.is_authenticated %}
+                        <li><a href="sign.html" class="head_link">Создать </a></li>/<li><a href="login.html" class="head_link">Войти</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>
 
         <div class="logo">
-            <img src="photo/Xlogo.gif" alt="">
+            <img src="{% static "photo/Xlogo.gif" %}" alt="">
         </div>
         <hr color="gray">
 
