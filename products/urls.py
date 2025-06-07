@@ -13,5 +13,8 @@ urlpatterns = [
     
     # Delete basket.
     path('delete/basket/<int:basket_id>/', delete_basket, name="delete_basket"),
-    path('delete/all/basket/', delete_all_baskets, name="delete_baskets")
+    path('delete/all/basket/', delete_all_baskets, name="delete_baskets"),
+    
+    # Change data in the profile.
+    # path('change/profile/', change_profile, name="change_profile")
 ]

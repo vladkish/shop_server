@@ -1,0 +1,22 @@
+{% load static %}
+
+<section class="profile">
+    <div class="text_profile"><h1>OXXXYSHOP - Профиль({{ user.username }})</h1></div>
+    <div class="photo"><img src="{% if user.image %}{{ user.image.url }}{% else %}{% static "photo/profile.png" %}{% endif %}" class="photo_profile" alt="Аватарка пользователя"></div>
+    <form action="{% url "products:basket_view" %}" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form_block">
+            <div class="username">
+                <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+                {{ form.username }}
+            </div>
+            <div class="lastname">
+                <label for="{{ form.email.id_for_label }}">Адрес электронной почты</label>
+                {{ form.email }}
+            </div>
+        </div>
+        <label for="{{ form.image.id_for_label }}">Выберете изображение</label>
+        {{ form.image }}
+        <button class="button_profile">Сохранить</button>        
+    </form>
+</section>

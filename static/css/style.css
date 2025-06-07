@@ -230,3 +230,8 @@
 .leave_link:hover {
     color: red !important;
 }
+
+.basket_head_link {
+    color: red !important;
+    font-size: 23px !important;
+}

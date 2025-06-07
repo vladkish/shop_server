@@ -1,22 +1,37 @@
 from django.shortcuts import render, redirect
 from .models import Product, Category, Basket
 from django.contrib.auth.decorators import login_required
+from .forms import ChangeForm
+from django.contrib import messages
 
 def index(request):
     
     context = {
         "products" : Product.objects.all(),
-        "categoryies" : Category.objects.all()
+        "categoryies" : Category.objects.all(),
+        "baskets" : Basket.objects.all()
     }
     
     return render(request, 'products/product.html', context)
 
 @login_required
 def basket_view(request):
+    if request.method == "POST":
+        form = ChangeForm(data=request.POST, instance=request.user, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            
+            messages.success(request, "Успешно изменили данные")
+            return redirect("index")
+        else:
+            print(form.errors)
+    else:
+        form = ChangeForm(instance=request.user)
     context = {
+        "form" : form,
         'baskets' : Basket.objects.filter(user=request.user)
     }
-    return render(request, 'products/basket.html', context)
+    return render(request, "products/basket.html", context)
 
 # Logic basket.
 def basket(request, product_id):
@@ -59,3 +74,19 @@ def delete_basket(request, basket_id):
 def delete_all_baskets(request):
     Basket.objects.filter(user=request.user).delete()
     return redirect(request.META['HTTP_REFERER'])
+
+# Profile change.
+# def change_profile(request):
+#     if request.method == "POST":
+#         form = UserChangeForm(data=request.POST, instance=request.user, files=request.FILES)
+#         if form.is_valid():
+#             form.save()
+            
+#             messages.success(request, "Успешно изменили данные")
+#             return redirect("index")
+#     else:
+#         form = UserChangeForm(instance=request.user)
+#     context = {
+#         "form" : form,
+#     }
+#     return render(request, 'products/basket.html', context)

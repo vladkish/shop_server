@@ -10,36 +10,7 @@
 
 {% block content %}
     <section class="center">
-        <section class="profile">
-            <div class="text_profile"><h1>OXXXYSHOP - Профиль({{ user.username }})</h1></div>
-            <div class="photo"><img src="photo/profile.png" class="photo_profile" alt="Аватарка пользователя"></div>
-            <form action="" method="post" class="form">
-                <div class="form_block">
-                    <div class="username">
-                        <label for="">Имя</label>
-                        <input type="text">
-                    </div>
-                    <div class="lastname">
-                        <label for="">Фамилия</label>
-                        <input type="text">
-                    </div>
-                </div>
-
-                <input type="text" placeholder="Выберите изображение" class="select_img">
-
-                <div class="form_block">
-                    <div class="username">
-                        <label for="">Имя пользователя</label>
-                        <input type="text">
-                    </div>
-                    <div class="lastname">
-                        <label for="">Адрес электронной почты</label>
-                        <input type="text">
-                    </div>
-                </div> 
-                <button class="button_profile">Сохранить</button>        
-            </form>
-        </section>
+        {% include "products/profile.html" %}
 
         {% if baskets %}
             <section class="basket">
@@ -80,7 +51,7 @@
                 </div>
             </section>
         {% else %}
-            <h1>Корзина пуста</h1>    
+            <h1>Корзина пуста</h1>
         {% endif %}
     </section>
 {% endblock content %}
