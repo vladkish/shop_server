@@ -20,4 +20,24 @@
         <button class="button_profile">Сохранить</button>        
     </form>
     <a href="{% url "users:delete_user" %}" class="delete_profile">Удалить профиль</a>
+
+    {% if form.errors %}
+        <div class="errors" id="error-box">
+            <button class="close-btn" onclick="closeErrorBox()">✖</button>
+            <h1>Внимание<span>!</span></h1>
+            {% for field, error in form.errors.items %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 </section>
+
+<script>
+    function closeErrorBox() {
+        const box = document.getElementById('error-box');
+        if (box) {
+            box.style.display = 'none';
+        }
+    }
+</script>
