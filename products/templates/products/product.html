@@ -44,25 +44,41 @@
         <div class="category">
             <nav class="nav">
                 <ul>
+                    <li><a href="{% url "index" %}">Все</a></li>
                     {% for category in categoryies %}
-                        <li><a href="">{{ category.title }}</a></li>
+                        <li><a href="{% url "products:category" category.id %}">{{ category.title }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>
         </div>
 
-        <section class="main" id="main">
-            {% for product in products %}
-                <div class="product">
-                    {% with product.images.first as first_image %}
-                        <img src="{{ first_image.image.url }}" alt="Фото продукта" class="photo_product">
-                    {% endwith %}
-                    <h1 class="name_product">{{ product.title }}</h1>
-                    <p class="price_product">{{ product.price }}р.</p>
-                    <a class="glow-on-hover primary_button" type="button" href="{% url "products:basket" product.id %}">В корзину</a>
-                </div>
-            {% endfor %}
-        </section>
+        {% if filters %}
+            <section class="main" id="main">
+                {% for filter in filters %}
+                    <div class="product">
+                        {% with filter.images.first as first_image %}
+                            <img src="{{ first_image.image.url }}" alt="Фото продукта" class="photo_product">
+                        {% endwith %}
+                        <h1 class="name_product">{{ filter.title }}</h1>
+                        <p class="price_product">{{ filter.price }}р.</p>
+                        <a class="glow-on-hover primary_button" type="button" href="{% url "products:basket" filter.id %}">В корзину</a>
+                    </div>
+                {% endfor %}
+            </section> 
+            {% elif products %}
+                <section class="main" id="main">
+                    {% for product in products %}
+                        <div class="product">
+                            {% with product.images.first as first_image %}
+                                <img src="{{ first_image.image.url }}" alt="Фото продукта" class="photo_product">
+                            {% endwith %}
+                            <h1 class="name_product">{{ product.title }}</h1>
+                            <p class="price_product">{{ product.price }}р.</p>
+                            <a class="glow-on-hover primary_button" type="button" href="{% url "products:basket" product.id %}">В корзину</a>
+                        </div>
+                    {% endfor %}
+                </section>
+        {% endif %}
     </section>
 
     <footer class="footer">

@@ -3,6 +3,7 @@ from .models import Product, Category, Basket
 from django.contrib.auth.decorators import login_required
 from .forms import ChangeForm
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 def index(request):
     
@@ -11,6 +12,20 @@ def index(request):
         "categoryies" : Category.objects.all(),
         "baskets" : Basket.objects.all()
     }
+    
+    return render(request, 'products/product.html', context)
+
+def category(request, category_id):
+    filters = Category.objects.get(id=category_id).products.all()
+    context = {
+        'filters' : filters,
+        'categoryies' : Category.objects.all() 
+    }
+    
+    objects = context['filters']
+    
+    for filters in objects:
+        print(filters)
     
     return render(request, 'products/product.html', context)
 

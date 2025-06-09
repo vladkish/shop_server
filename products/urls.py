@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import basket_view, basket, add_basket, minus_basket, delete_basket, delete_all_baskets
+from .views import basket_view, basket, add_basket, minus_basket, delete_basket, delete_all_baskets, category
 
 app_name = "products"
 
@@ -14,7 +14,7 @@ urlpatterns = [
     # Delete basket.
     path('delete/basket/<int:basket_id>/', delete_basket, name="delete_basket"),
     path('delete/all/basket/', delete_all_baskets, name="delete_baskets"),
-    
-    # Change data in the profile.
-    # path('change/profile/', change_profile, name="change_profile")
+
+    # Filter urls.
+    path('category/<int:category_id>/', category, name="category")
 ]
