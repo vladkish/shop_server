@@ -49,13 +49,6 @@
     margin-top: 50px;
 }
 
-.category nav ul li:hover {
-    color: black;
-    text-decoration: underline;
-    text-decoration-color: black;
-    cursor: pointer;
-}
-
 .logo {
     margin-top: 150px;
     display: flex;
@@ -234,4 +227,32 @@
 .basket_head_link {
     color: red !important;
     font-size: 23px !important;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.ul_link_category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    list-style-type: none;
+}
+
+/* Correct link category. */
+.link_category {
+    font-size: 42px;
+    color: black;
+    text-decoration: none;
+    border: 2px solid transparent;
+}
+
+.link_category:hover {
+    border-bottom-color: black;
+    text-decoration: none !important;
 }

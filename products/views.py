@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Product, Category, Basket
 from django.contrib.auth.decorators import login_required
 from .forms import ChangeForm
@@ -10,8 +10,13 @@ def index(request):
     context = {
         "products" : Product.objects.all(),
         "categoryies" : Category.objects.all(),
-        "baskets" : Basket.objects.all()
     }
+    
+    try:
+        if Basket.objects.filter(user=request.user).count() >= 1:
+            context['basket'] = 1
+    except TypeError:
+        pass
     
     return render(request, 'products/product.html', context)
 

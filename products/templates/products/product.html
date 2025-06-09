@@ -21,16 +21,13 @@
                 <ul>
                     <li><a href="{% url "index" %}" class="head_link">Главная</a></li> 
                     <li><a href="#main" class="head_link">Одежда</a></li>
-                    {% if user.is_authenticated %}
-                        {% if baskets.count >= 1 %}
-                            <li><a href="{% url "products:basket_view" %}" class="basket_head_link">Корзина</a></li>
-                        {% else %}
-                            <li><a href="{% url "products:basket_view" %}" class="head_link">Корзина</a></li>
-                        {% endif %}
+                    {% if user.is_authenticated and basket >= 1 %}
+                        <li><a href="{% url "products:basket_view" %}" class="basket_head_link">Корзина</a></li>
+                    {% else %}
+                        <li><a href="{% url "products:basket_view" %}" class="head_link">Корзина</a></li>
                     {% endif %}
                     {% if not user.is_authenticated %}
                         <li><a href="{% url "users:sign" %}" class="head_link">Создать </a></li>/<li><a href="{% url "users:login" %}" class="head_link">Войти</a></li>
-
                     {% else %}
                         <li class="leave_li"><a href="{% url "users:user_logout" %}" class="leave_link head_link">Выход</a></li>
                     {% endif %}
@@ -44,11 +41,11 @@
         <hr color="gray">
 
         <div class="category">
-            <nav class="nav">
-                <ul>
-                    <li><a href="{% url "index" %}">Все</a></li>
+            <nav class="nav_category">
+                <ul class="ul_link_category">
+                    <li><a href="{% url "index" %}" class="link_category">Все</a></li>
                     {% for category in categoryies %}
-                        <li><a href="{% url "products:category" category.id %}">{{ category.title }}</a></li>
+                        <li><a href="{% url "products:category" category.id %}" class="link_category">{{ category.title }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>
