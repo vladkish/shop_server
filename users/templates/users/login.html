@@ -22,5 +22,6 @@
             {{ form.password }}
         </div>
         <button class="sign_button">Войти</button>
+        <a href="{% url "users:sign" %}" class="link_another">Создать аккаунт</a>
     </form>
 {% endblock form %}

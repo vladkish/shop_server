@@ -54,6 +54,7 @@ def basket_view(request):
     return render(request, "products/basket.html", context)
 
 # Logic basket.
+@login_required
 def basket(request, product_id):
     product = Product.objects.get(id=product_id)
     baskets = Basket.objects.filter(user=request.user, product=product)
