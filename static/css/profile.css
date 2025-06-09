@@ -63,3 +63,26 @@
     width: 634px;
     height: 30px;
 }
+
+
+/* Delete profile */
+.delete_profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    background-color: red;
+    border: 4px solid black;
+    text-decoration: none;
+
+    transition: .1s ease;
+    width: 740px;
+    margin: 20px auto;
+    padding: 10px 30px;
+    font-size: 24px;
+}
+
+.delete_profile:hover {
+    border: 4px solid transparent;
+}

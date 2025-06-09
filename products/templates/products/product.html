@@ -21,10 +21,12 @@
                 <ul>
                     <li><a href="{% url "index" %}" class="head_link">Главная</a></li> 
                     <li><a href="#main" class="head_link">Одежда</a></li>
-                    {% if baskets.count >= 1 %}
-                        <li><a href="{% url "products:basket_view" %}" class="basket_head_link">Корзина</a></li>
-                    {% else %}
-                        <li><a href="{% url "products:basket_view" %}" class="head_link">Корзина</a></li>
+                    {% if user.is_authenticated %}
+                        {% if baskets.count >= 1 %}
+                            <li><a href="{% url "products:basket_view" %}" class="basket_head_link">Корзина</a></li>
+                        {% else %}
+                            <li><a href="{% url "products:basket_view" %}" class="head_link">Корзина</a></li>
+                        {% endif %}
                     {% endif %}
                     {% if not user.is_authenticated %}
                         <li><a href="{% url "users:sign" %}" class="head_link">Создать </a></li>/<li><a href="{% url "users:login" %}" class="head_link">Войти</a></li>

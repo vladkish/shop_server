@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import User
 
 # Import Form.
 from .forms import LoginForm, SignForm
@@ -44,7 +46,12 @@ def sign(request):
     }
     return render(request, 'users/sign.html', context)
 
-# Fnc logout.
+@login_required
 def user_logout(request):
     auth.logout(request)
     return redirect(request.META['HTTP_REFERER'])
+
+@login_required
+def delete_user(request):
+    user = User.objects.filter(username=request.user.username).first().delete()
+    return redirect('index')
