@@ -29,9 +29,11 @@
                             <hr>
                             <div class="cart_count">
                                 <div class="number">
-                                    <p>{{ basket.quantity }}</p>
                                     <div class="doing">
                                         <a href="{% url "products:add_basket" basket.id %}" class="clean_link">+</a>
+                                    </div>
+                                    <p>{{ basket.quantity }}</p>
+                                    <div class="doing">
                                         <a href="{% url "products:minus_basket" basket.id %}" class="clean_link">-</a>
                                     </div>
                                 </div>

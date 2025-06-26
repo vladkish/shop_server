@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import basket_view, basket, add_basket, minus_basket, delete_basket, delete_all_baskets, category
+from .views import basket_view, basket, add_basket, minus_basket, delete_basket, delete_all_baskets, index
 
 app_name = "products"
 
@@ -16,5 +16,5 @@ urlpatterns = [
     path('delete/all/basket/', delete_all_baskets, name="delete_baskets"),
 
     # Filter urls.
-    path('category/<int:category_id>/', category, name="category")
+    path('category/<int:category_id>/', index, name="category")
 ]

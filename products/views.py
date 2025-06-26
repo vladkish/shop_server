@@ -5,10 +5,10 @@ from .forms import ChangeForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 
-def index(request):
-    
+def index(request, category_id=None):
     context = {
-        "products" : Product.objects.all(),
+        # Правильно решение фильтрации по категориям на сайте.
+        "products" : Product.objects.filter(category_id=category_id) if category_id else Product.objects.all(),
         "categoryies" : Category.objects.all(),
     }
     
@@ -17,20 +17,6 @@ def index(request):
             context['basket'] = 1
     except TypeError:
         pass
-    
-    return render(request, 'products/product.html', context)
-
-def category(request, category_id):
-    filters = Category.objects.get(id=category_id).products.all()
-    context = {
-        'filters' : filters,
-        'categoryies' : Category.objects.all() 
-    }
-    
-    objects = context['filters']
-    
-    for filters in objects:
-        print(filters)
     
     return render(request, 'products/product.html', context)
 
