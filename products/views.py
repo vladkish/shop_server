@@ -6,9 +6,10 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 
 def index(request, category_id=None):
+    products = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
     context = {
         # Правильно решение фильтрации по категориям на сайте.
-        "products" : Product.objects.filter(category_id=category_id) if category_id else Product.objects.all(),
+        "products" : products,
         "categoryies" : Category.objects.all(),
     }
     
